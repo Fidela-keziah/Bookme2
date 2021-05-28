@@ -10,7 +10,6 @@
     <div class='row justify-content-center m-3'>
         <div class='col-sm-6 col-xs-12'>
             <h1 class='text-center'>{{ item.title }}</h1>
-            <p>{{ item.content }}</p>
             <div class='row justify-content-center'>
                 {% for image in images %}
                     {% if image.article == item %}
@@ -22,6 +21,8 @@
                     {% endif %}
                 {% endfor %}
             </div>
+            <p>{{ item.content }}</p>
+            
         </div>
     </div>
     <hr>

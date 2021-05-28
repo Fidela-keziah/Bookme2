@@ -12,7 +12,7 @@ from about.views import get_operating_hours
 # Create your views here.
 def home_view(request):
     pictures = HomePicture.objects.all()    
-    about = About.objects.values_list('info', flat=True)
+    about = About.objects.values_list('info', flat=True)[0]
     operating_hours = get_operating_hours()
     featured_services = Service.objects.filter(featured=True)
     location = MapLocation.objects.last().location_text.replace(' ', '+')
