@@ -53,12 +53,12 @@ def get_operating_hours():
 
 # region about_admin
 
-@admin_required
+#@admin_required
 def edit_about_admin_view(request):
     return edit_admin_view(request, 1, 'about', About, AboutForm)
 
 
-@admin_required
+#@admin_required
 def edit_about_picture_admin_view(request):
     return edit_admin_view(request, 1, 'about picture', AboutPicture, AboutPictureForm)
 
@@ -66,17 +66,17 @@ def edit_about_picture_admin_view(request):
 
 # region contact_admin
 
-@admin_required
+#@admin_required
 def contact_information_admin_view(request):
     return admin_view(request, 'contact information', ContactInformation, ContactInformationForm)
 
 
-@admin_required
+#@admin_required
 def edit_contact_information_admin_view(request, id):
     return edit_admin_view(request, id, 'contact information', ContactInformation, ContactInformationForm)
 
 
-@admin_required
+#@admin_required
 def delete_contact_information_admin_view(request, id):
     return delete_admin_view(request, id, 'contact information', ContactInformation)
 
@@ -84,17 +84,17 @@ def delete_contact_information_admin_view(request, id):
 
 # region award_admin
 
-@admin_required
+#@admin_required
 def award_admin_view(request):
     return admin_view(request, 'award', Award, AwardForm)
 
 
-@admin_required
+#@admin_required
 def edit_award_admin_view(request, id):
     return edit_admin_view(request, id, 'award', Award, AwardForm)
 
 
-@admin_required
+#@admin_required
 def delete_award_admin_view(request, id):
     return delete_admin_view(request, id, 'award', Award)
 
@@ -102,17 +102,17 @@ def delete_award_admin_view(request, id):
 
 # region partnership_admin
 
-@admin_required
+#@admin_required
 def partnership_admin_view(request):
     return admin_view(request, 'partnership', Partnership, PartnershipForm)
 
 
-@admin_required
+#@admin_required
 def edit_partnership_admin_view(request, id):
     return edit_admin_view(request, id, 'partnership', Partnership, PartnershipForm)
 
 
-@admin_required
+#@admin_required
 def delete_partnership_admin_view(request, id):
     return delete_admin_view(request, id, 'partnership', Partnership)
 

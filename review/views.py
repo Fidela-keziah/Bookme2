@@ -23,7 +23,7 @@ def reviews_view(request):
         return render(request, 'review.html', context)
     return render(request, 'not_qualified_review.html')
 
-@admin_required
+#@admin_required
 def reviews_admin_view(request):
     reviews = Review.objects.all()
     context = {

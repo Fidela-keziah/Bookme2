@@ -27,17 +27,17 @@ def product_view(request, id):
 
 # region product admin
 
-@admin_required
+#@admin_required
 def product_admin_view(request):
     return admin_view(request, 'product', Product, ProductForm)
 
 
-@admin_required
+#@admin_required
 def edit_product_admin_view(request, id):
     return edit_admin_view(request, id, 'product', Product, ProductForm)
 
 
-@admin_required
+#@admin_required
 def delete_product_admin_view(request, id):
     return delete_admin_view(request, id, 'product', Product)
 

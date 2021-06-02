@@ -39,6 +39,6 @@ def delete_admin_view(request, id, name, model):
     obj.delete()
     return redirect(name.replace(' ', '-') + '-admin')
 
-@admin_required
+#@admin_required
 def manage_site_view(request):
     return render(request, 'manage_site.html')

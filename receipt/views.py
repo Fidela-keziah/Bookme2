@@ -12,7 +12,7 @@ def receipt_view(request):
     }
     return render(request, 'receipt.html', context)
 
-@admin_required
+#@admin_required
 def receipt_admin_view(request):
     receipts = Receipt.objects.all()
     context = {

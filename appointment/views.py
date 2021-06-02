@@ -54,7 +54,7 @@ def appointment_view(request):
     }
     return render(request, 'appointment.html', context)
 
-@admin_required
+#@admin_required
 def appointment_admin_view(request):
     appointments = Appointment.objects.all()
     requested_for_cancellation = appointments.filter(
@@ -73,7 +73,7 @@ def appointment_admin_view(request):
     }
     return render(request, 'appointment.html', context)
 
-@admin_required
+#@admin_required
 def cancel_appointment_admin_view(request, id):
     appointment = Appointment.objects.get(id=id)
     if appointment.rejected_requested_cancellation:
@@ -94,14 +94,14 @@ def request_cancellation_appointment_view(request, id):
     appointment.save()
     return redirect('appointment')
 
-@admin_required
+#@admin_required
 def reject_cancellation_request_appointment_admin_view(request, id):
     appointment = Appointment.objects.get(id=id)
     appointment.rejected_requested_cancellation = True
     appointment.save()
     return redirect('appointment-admin')
 
-@admin_required
+#@admin_required
 def edit_appointment_time_admin_view(request):
     appointment_time = AppointmentTime.objects.last()
     appointment_time_form = AppointmentTimeForm(request.POST or None, instance=appointment_time)

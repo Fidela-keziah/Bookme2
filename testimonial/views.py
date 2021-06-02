@@ -50,7 +50,7 @@ def testimonial_staff_view(request):
     }
     return render(request, 'testimonial_staff.html', context)
 
-@admin_required
+#@admin_required
 def testimonials_admin_view(request):
     testimonials = Testimonial.objects.all()
     context = {

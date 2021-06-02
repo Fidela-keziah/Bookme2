@@ -10,7 +10,7 @@ from decorators import admin_required
 
 # Create your views here.
 
-@admin_required
+#@admin_required
 def reports_admin_view(request):
     now = timezone.now()
     registered_users = CustomerProfile.objects.all().count()

@@ -13,7 +13,7 @@ from newsletter.models import StaffRecipientList
 
 # Create your views here.
 
-@admin_required
+#@admin_required
 @transaction.atomic
 def signup_staff_view(request):
     staff_profile_form = StaffProfileForm(request.POST or None, request.FILES or None)
@@ -36,7 +36,7 @@ def signup_staff_view(request):
     }
     return render(request, 'registration/signup.html', context)
 
-@admin_required
+#@admin_required
 @transaction.atomic
 def delete_staff_view(request, id):
     obj = StaffProfile.objects.get(id=id)
@@ -45,7 +45,7 @@ def delete_staff_view(request, id):
     obj.delete()
     return redirect('staff-admin')
 
-@admin_required
+#@admin_required
 @transaction.atomic
 def staff_view(request):
     objects = StaffProfile.objects.all()

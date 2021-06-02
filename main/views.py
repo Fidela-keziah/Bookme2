@@ -26,20 +26,20 @@ def home_view(request):
     return render(request, 'home.html', context)
 
 
-@admin_required
+#@admin_required
 def home_picture_admin_view(request):
     return admin_view(request, 'home picture', HomePicture, HomePictureForm)
 
 
-@admin_required
+#@admin_required
 def edit_home_picture_admin_view(request, id):
     return edit_admin_view(request, id, 'home picture', HomePicture, HomePictureForm)
 
 
-@admin_required
+#@admin_required
 def delete_home_picture_admin_view(request, id):
     return delete_admin_view(request, id, 'home picture', HomePicture)
 
-@admin_required
+#@admin_required
 def edit_map_location_text_admin_view(request):
     return edit_admin_view(request, 1, 'map location text', MapLocation, MapLocationForm)

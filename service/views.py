@@ -25,7 +25,7 @@ def service_view(request, id):
 
 # region service admin
 
-@admin_required
+#@admin_required
 def service_admin_view(request):
     return admin_view(request, 'service', Service, ServiceForm)
 

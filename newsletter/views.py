@@ -6,7 +6,7 @@ from decorators import admin_required, user_required
 from django.core.mail import send_mail
 
 # Create your views here.
-@admin_required
+#@admin_required
 def newsletter_view(request, type):
     if type == 'customer':
         recipient_list = CustomerRecipientList.objects.last()

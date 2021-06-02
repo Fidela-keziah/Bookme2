@@ -14,17 +14,17 @@ def gallery_view(request):
 
 # region picture_admin
 
-@admin_required
+#@admin_required
 def picture_admin_view(request):
     return admin_view(request, 'picture', SalonPicture, SalonPictureForm)
 
 
-@admin_required
+#@admin_required
 def edit_picture_admin_view(request, id):
     return edit_admin_view(request, id, 'picture', SalonPicture, SalonPictureForm)
 
 
-@admin_required
+#@admin_required
 def delete_picture_admin_view(request, id):
     return delete_admin_view(request, id, 'picture', SalonPicture)
 

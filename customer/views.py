@@ -32,7 +32,7 @@ def signup_view(request):
     }
     return render(request, 'registration/signup.html', context)
 
-@admin_required
+#@admin_required
 def user_admin_view(request):
     objects = CustomerProfile.objects.all()
     context = {
