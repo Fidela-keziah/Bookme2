@@ -116,7 +116,7 @@ def edit_appointment_time_admin_view(request):
 FLOW = flow_from_clientsecrets(
     os.path.join(BASE_DIR, 'credentials.json'),
     scope='https://www.googleapis.com/auth/calendar.events',
-    redirect_uri="http://localhost:8000/appointments/callback",
+    redirect_uri="http://127.0.0.1:8000/appointments/callback",
 )
 
 @user_required
@@ -150,11 +150,11 @@ def access_authorization_view(request, flow=FLOW):
         'location': 'BookMe',
         'start': {
             'dateTime': f'{appointment_start.year}-{appointment_start.month}-{appointment_start.day}T{appointment_start.hour}:{appointment_start.minute}:{appointment_start.second}',
-            'timeZone': 'Asia/Beirut'
+            'timeZone': 'Africa/Kigali'
         },
         'end': {
             'dateTime': f'{appointment_end.year}-{appointment_end.month}-{appointment_end.day}T{appointment_end.hour}:{appointment_end.minute}:{appointment_end.second}',
-            'timeZone': 'Asia/Beirut'
+            'timeZone': 'Africa/Kigali'
         },
         'sendUpdates': 'all',
     }
