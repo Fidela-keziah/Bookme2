@@ -14,9 +14,9 @@
         <li class="list-group-item">
             <strong>Service</strong><br>
             {% if item.service.discounted_price == None %}
-            <p class='m-0 p-0'>{{ item.service.name }} - {{ item.service.price }}$</p>
+            <p class='m-0 p-0'>{{ item.service.name }} - {{ item.service.price }}K Rwf</p>
             {% else %}
-            <p class='m-0 p-0'>{{ item.service.name }} - {{ item.service.discounted_price }}$</p>
+            <p class='m-0 p-0'>{{ item.service.name }} - {{ item.service.discounted_price }}K Rwf</p>
             {% endif %}
         </li>
         <li class="list-group-item">

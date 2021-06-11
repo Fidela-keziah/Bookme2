@@ -5,8 +5,61 @@
 {% block content %}
 <div class='row justify-content-center'>
     <div class='col-lg-4 col-md-6 col-sm-12'>
-        <h1 class='text-center'>Add Appointment to Your Google Calendar?</h1>
-        <h5 class='text-center'><a href="{% url 'add-event-to-calendar' %}">Yes</a></h5>
+        <h1 class='text-center'> In order to continue the reservation there is a fee of 3000 that must be acquainted in order to finish the booking  </h1>
+        <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+        <h5 class='text-center' onClick="payWithRave()"><a>Yes</a></h5>
+       
+        <script>
+        const publicKey = "FLWPUBK_TEST-9193d2f98d417161c23704acbc586ff0-X";
+        const customer_phone = "0787562402";
+        const total_amount = "3000"
+        function payWithRave() {
+            var x = getpaidSetup({
+            PBFPubKey: publicKey,
+            customer_email: "irafidela@gmail.com",
+            customer_phone: customer_phone,
+            amount:total_amount,
+            currency: "RWF",
+            txref: "rave-123456",
+            custom_title: "BookMe",
+            onclose: function () { },
+            callback: function (response) {
+                var txref = response.tx.txRef;
+                if (
+                response.tx.chargeResponseCode == "00" ||
+                response.tx.chargeResponseCode == "0"
+                ) {
+                const data = { sender: 'BookMe', phone: customer_phone, sms: "Thank you" };
+                const headers = new Headers();
+                const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                const url = 'https://auth-sms.herokuapp.com/Send';
+                headers.append('Content-Type', 'application/json');
+                headers.append('Accept', 'application/json');
+                headers.append('Origin', 'https://auth-sms.herokuapp.com/Send');
+                fetch(proxyurl+url, {
+                    method: 'POST', // or 'PUT'
+                    headers: headers,
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                    console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                    console.error('Error:', error);
+                    });
+
+                    document.location.href = "http://127.0.0.1:8000/appointments/add-event-to-calendar/";
+                // redirect to a success page
+                } else {
+                // redirect to a failure page.
+                }
+                x.close();
+            }
+            });
+        }
+
+        </script>
         <h5 class='text-center'><a href="{% url 'send-event-as-text-message-prompt' %}">No</a></h5>
     </div>
 </div>

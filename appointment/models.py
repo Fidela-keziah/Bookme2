@@ -8,6 +8,7 @@ class Appointment(models.Model):
     staff = models.ForeignKey('staff.StaffProfile', on_delete=models.CASCADE)
     service = models.ForeignKey('service.Service', on_delete=models.CASCADE)
     date = models.DateTimeField()
+    person = models.IntegerField(null=True, default=1)
     notes = models.TextField(max_length=300)
     canceled = models.BooleanField(default=False)
     requested_cancellation = models.BooleanField(default=False)
