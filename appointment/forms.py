@@ -10,7 +10,7 @@ class AppointmentForm(forms.ModelForm):
     date = forms.DateTimeField()
     class Meta:
         model = Appointment
-        fields = ['service', 'date', 'staff', 'notes']
+        fields = ['service', 'date', 'staff','person','notes']
 
     def __init__(self, *args, **kwargs):
         service_type_id = kwargs.pop('service_type_id')

@@ -21,9 +21,9 @@
                     <p class='p-0 m-0'>{{ item.quantity }}x {{ item.product.name }}
                         <span class='pull-right'>
                         {% if item.product.discounted_price %}
-                        {{ item.product.discounted_price }}$
+                        {{ item.product.discounted_price }}K
                         {% else %}
-                        {{ item.product.price }}$
+                        {{ item.product.price }}K
                         {% endif %}
                         </span>
                     </p>
@@ -31,7 +31,7 @@
                 <hr class='m-1'>
                 {% endfor %}
                 <div class='card-body'>
-                    <p class='p-0 m-0'><strong>Total Price<span class='pull-right'>{{ receipt.total_price }}$</span></strong></p>
+                    <p class='p-0 m-0'><strong>Total Price<span class='pull-right'>{{ receipt.total_price }}K</span></strong></p>
                 </div>
             </div>
         </div>

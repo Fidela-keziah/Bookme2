@@ -30,13 +30,67 @@
                 <hr class='m-1'>
                 {% endfor %}
                 <div class='card-body'>
-                    <p class='p-0 m-0'><strong>Total Price<span class='pull-right'>{{ cart.total_price }}K Rwf</span></strong></p>
+                    <p class='p-0 m-0'><strong>Total Price<span class='pull-right'>{{ cart.total_price }} Rwf</span></strong></p>
                 </div>
                 <div class='card-body'>
-                    <button class='btn btn-primary m-auto d-block rounded'>
-                        <a class='text-white' href={% url 'checkout' %}>Check Out</a>
+                    <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+                    <button class='btn btn-primary m-auto d-block rounded'type="button" onClick="payWithRave()"> 
+                     checkout 
                     </button>
                 </div>
+               
+        <script>
+          const publicKey = "FLWPUBK_TEST-9193d2f98d417161c23704acbc586ff0-X";
+          const customer_phone = "0787562402";
+          const total_amount = "{{ cart.total_price }}"
+          function payWithRave() {
+            var x = getpaidSetup({
+              PBFPubKey: publicKey,
+              customer_email: "irafidela@gmail.com",
+              customer_phone: customer_phone,
+              amount:total_amount,
+              currency: "RWF",
+              txref: "rave-123456",
+              custom_title: "BookMe",
+              onclose: function () { },
+              callback: function (response) {
+                var txref = response.tx.txRef;
+                if (
+                  response.tx.chargeResponseCode == "00" ||
+                  response.tx.chargeResponseCode == "0"
+                ) {
+                  const data = { sender: 'BookMe', phone: customer_phone, sms: "Thank you" };
+                  const headers = new Headers();
+                  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+                  const url = 'https://auth-sms.herokuapp.com/Send';
+                  headers.append('Content-Type', 'application/json');
+                  headers.append('Accept', 'application/json');
+                  headers.append('Origin', 'https://auth-sms.herokuapp.com/Send');
+                  fetch(proxyurl+url, {
+                    method: 'POST', // or 'PUT'
+                    headers: headers,
+                    body: JSON.stringify(data)
+                  })
+                    .then(response => response.json())
+                    .then(data => {
+                      console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                      console.error('Error:', error);
+                    });
+
+                    document.location.href = "checkout/";
+                  // redirect to a success page
+                } else {
+                  // redirect to a failure page.
+                }
+                x.close();
+              }
+            });
+          }
+
+        </script>
+
             </div>
             {% endif %}
         </div>

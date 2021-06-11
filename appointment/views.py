@@ -12,7 +12,8 @@ from .models import Appointment, AppointmentTime
 from googleapiclient.discovery import build
 from oauth2client.client import flow_from_clientsecrets
 from twilio.rest import Client
-
+import requests
+import json
 # Create your views here.
 @transaction.atomic
 @user_required
@@ -51,6 +52,7 @@ def appointment_view(request):
         'todays': appointments_today,
         'done': done_appointments,
         'upcomings': upcoming_appointments,
+        'all': appointments,
     }
     return render(request, 'appointment.html', context)
 
@@ -127,14 +129,21 @@ def add_event_to_calendar_view(request, flow=FLOW):
 def send_event_as_text_message_view(request):
     appointment = Appointment.objects.filter(customer__user=request.user).last()
     customer = CustomerProfile.objects.get(user=request.user)
-    account_sid = "twilio_account_id"
-    auth_token = "twilio_auth_token"
-    client = Client(account_sid, auth_token)
-    message = client.messages.create(
-        body=f'{appointment.service.service_type} Appointment at BookMe @ { appointment.date }',
-        to=f'+961{customer.phone_number}',
-        from_="+12052932763",
-    )
+    # account_sid = "twilio_account_id"
+    # auth_token = "twilio_auth_token"
+    # client = Client(account_sid, auth_token)
+    # message = client.messages.create(
+    #     body=f'{appointment.service.service_type} Appointment at BookMe @ { appointment.date }',
+    #     to=f'+961{customer.phone_number}',
+    #     from_="+12052932763",
+    # )
+    obj={
+    'sender':'BOOKME',
+    'phone':'0784273802',
+    'sms':'Dear '+customer.user.username+", thank you for choosing Book me, you set an apointment on "+str(appointment.date)
+    }
+    r=requests.post('https://send.isangegroup.com/',data=json.dumps(obj))
+    print(r.text)
     return redirect('appointment')
 
 

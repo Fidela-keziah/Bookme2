@@ -23,7 +23,7 @@
     </div>
     {% endif %}
     <div class='row justify-content-center content-wrapper'>
-        <button class='btn btn-info rounded'><a class='text-white' href="{% url 'appointment-calendar' %}" target="_blank">View Calendar</a></button>
+        <button class='btn rounded' style="background-color: #76F182;"><a class='text-white' href="{% url 'appointment-calendar' %}" target="_blank" >View Calendar</a></button>
     </div>
     <div class='row justify-content-center content-wrapper'>
         <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
@@ -45,7 +45,7 @@
             </div>
             {% endfor %}
             <div class="form-group">
-                <input class='form-control' type='submit' value='Book'>
+                <input class='form-control' type='submit' value='Book' style="background-color: #76F182;">
             </div>
         </form>
     </div>
